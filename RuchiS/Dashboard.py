@@ -11,16 +11,16 @@ st.set_page_config(
     layout="wide"
 )
 csv_folder = r'C:\Users\ruchi\OneDrive\Documents\Python Hackathon May 2026\HUPA-UC Diabetes Dataset-20250820T010637Z-1-001\HUPA-UC Diabetes Dataset'
-output_file = r"C:\Temporary\combined_df_data.csv"
+cleaned_combined_data_file = r"C:\Temporary\combined_df_data.csv"
 output_file2 = r"C:\Temporary\dashboard_data.csv"
-files = os.path.join(csv_folder, "T1DM_patient_sleep_demographics_with_race.csv")
+demographic_file = os.path.join(csv_folder, "T1DM_patient_sleep_demographics_with_race.csv")
 
 
-df = pd.read_csv(files)
-output_df = pd.read_csv(output_file)
+demographic_df = pd.read_csv(demographic_file)
+dataset_df = pd.read_csv(cleaned_combined_data_file)
 combined_df = pd.merge(
-    df,
-    output_df,
+    demographic_df,
+    dataset_df,
     on='Patient_ID',
     how='left'
 )
